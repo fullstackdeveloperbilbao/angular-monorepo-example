@@ -16,6 +16,16 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
+    "paths": {
+      "@shared/product-card": ["projects/libs/shared/product-card/src/public-api.ts"],
+      "@fruit-store/layout": ["projects/libs/fruit-store/layout/src/public-api.ts"],
+      "@bakery/shell": [
+        "projects/libs/bakery/shell/src/public-api.ts"
+      ],
+      "@shared/util-interfaces": [
+        "projects/libs/shared/util-interfaces/src/public-api.ts",
+      ],
+    },
     "target": "es2020",
     "module": "es2020",
     "lib": [

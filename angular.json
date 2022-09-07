@@ -1,7 +1,337 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "newProjectRoot": "projects",
+  "newProjectRoot": "projects/libs/shared",
+  "schematics": {
+    "@schematics/angular:application": {
+      "routing": true,
+      "style": "scss"
+    }
+  },
   "projects": {
+    "bakery": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/apps/bakery",
+      "sourceRoot": "projects/apps/bakery/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/bakery",
+            "index": "projects/apps/bakery/src/index.html",
+            "main": "projects/apps/bakery/src/main.ts",
+            "polyfills": "projects/apps/bakery/src/polyfills.ts",
+            "tsConfig": "projects/apps/bakery/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/apps/bakery/src/favicon.ico",
+              "projects/apps/bakery/src/assets"
+            ],
+            "styles": [
+              "projects/apps/bakery/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/apps/bakery/src/environments/environment.ts",
+                  "with": "projects/apps/bakery/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "bakery:build:production"
+            },
+            "development": {
+              "browserTarget": "bakery:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "bakery:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/apps/bakery/src/test.ts",
+            "polyfills": "projects/apps/bakery/src/polyfills.ts",
+            "tsConfig": "projects/apps/bakery/tsconfig.spec.json",
+            "karmaConfig": "projects/apps/bakery/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/apps/bakery/src/favicon.ico",
+              "projects/apps/bakery/src/assets"
+            ],
+            "styles": [
+              "projects/apps/bakery/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "fruit-store": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/apps/fruit-store",
+      "sourceRoot": "projects/apps/fruit-store/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/fruit-store",
+            "index": "projects/apps/fruit-store/src/index.html",
+            "main": "projects/apps/fruit-store/src/main.ts",
+            "polyfills": "projects/apps/fruit-store/src/polyfills.ts",
+            "tsConfig": "projects/apps/fruit-store/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/apps/fruit-store/src/favicon.ico",
+              "projects/apps/fruit-store/src/assets"
+            ],
+            "styles": [
+              "projects/apps/fruit-store/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/apps/fruit-store/src/environments/environment.ts",
+                  "with": "projects/apps/fruit-store/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "fruit-store:build:production"
+            },
+            "development": {
+              "browserTarget": "fruit-store:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "fruit-store:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/apps/fruit-store/src/test.ts",
+            "polyfills": "projects/apps/fruit-store/src/polyfills.ts",
+            "tsConfig": "projects/apps/fruit-store/tsconfig.spec.json",
+            "karmaConfig": "projects/apps/fruit-store/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/apps/fruit-store/src/favicon.ico",
+              "projects/apps/fruit-store/src/assets"
+            ],
+            "styles": [
+              "projects/apps/fruit-store/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "product-card": {
+      "projectType": "library",
+      "root": "projects/libs/shared/product-card",
+      "sourceRoot": "projects/libs/shared/product-card/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/libs/shared/product-card/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/libs/shared/product-card/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/libs/shared/product-card/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/libs/shared/product-card/src/test.ts",
+            "tsConfig": "projects/libs/shared/product-card/tsconfig.spec.json",
+            "karmaConfig": "projects/libs/shared/product-card/karma.conf.js"
+          }
+        }
+      }
+    },
+    "layout": {
+      "projectType": "library",
+      "root": "projects/libs/fruit-store/layout",
+      "sourceRoot": "projects/libs/fruit-store/layout/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/libs/fruit-store/layout/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/libs/fruit-store/layout/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/libs/fruit-store/layout/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/libs/fruit-store/layout/src/test.ts",
+            "tsConfig": "projects/libs/fruit-store/layout/tsconfig.spec.json",
+            "karmaConfig": "projects/libs/fruit-store/layout/karma.conf.js"
+          }
+        }
+      }
+    },
+    "shell": {
+      "projectType": "library",
+      "root": "projects/libs/bakery/shell",
+      "sourceRoot": "projects/libs/bakery/shell/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/libs/bakery/shell/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/libs/bakery/shell/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/libs/bakery/shell/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/libs/bakery/shell/src/test.ts",
+            "tsConfig": "projects/libs/bakery/shell/tsconfig.spec.json",
+            "karmaConfig": "projects/libs/bakery/shell/karma.conf.js"
+          }
+        }
+      }
+    },
+    "util-interfaces": {
+      "projectType": "library",
+      "root": "projects/libs/shared/util-interfaces",
+      "sourceRoot": "projects/libs/shared/util-interfaces/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/libs/shared/util-interfaces/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/libs/shared/util-interfaces/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/libs/shared/util-interfaces/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/libs/shared/util-interfaces/src/test.ts",
+            "tsConfig": "projects/libs/shared/util-interfaces/tsconfig.spec.json",
+            "karmaConfig": "projects/libs/shared/util-interfaces/karma.conf.js"
+          }
+        }
+      }
+    }
   }
 }
