@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start:bakery": "ng serve bakery",
-    "start:fruit-store": "ng serve fruit-store",
+    "start:bakery": "ng serve bakery --port=4200 --open",
+    "start:fruit-store": "ng serve fruit-store --port=4300 --open",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
