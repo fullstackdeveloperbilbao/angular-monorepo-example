@@ -1,7 +1,10 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "newProjectRoot": "projects/libs/shared",
+  "cli": {
+    "schematicCollections": ["custom-schematics-library"]
+  },
+  "newProjectRoot": "projects",
   "schematics": {
     "@schematics/angular:application": {
       "routing": true,
@@ -33,9 +36,7 @@
               "projects/apps/bakery/src/favicon.ico",
               "projects/apps/bakery/src/assets"
             ],
-            "styles": [
-              "projects/apps/bakery/src/styles.scss"
-            ],
+            "styles": ["projects/apps/bakery/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -101,9 +102,7 @@
               "projects/apps/bakery/src/favicon.ico",
               "projects/apps/bakery/src/assets"
             ],
-            "styles": [
-              "projects/apps/bakery/src/styles.scss"
-            ],
+            "styles": ["projects/apps/bakery/src/styles.scss"],
             "scripts": []
           }
         }
@@ -133,9 +132,7 @@
               "projects/apps/fruit-store/src/favicon.ico",
               "projects/apps/fruit-store/src/assets"
             ],
-            "styles": [
-              "projects/apps/fruit-store/src/styles.scss"
-            ],
+            "styles": ["projects/apps/fruit-store/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -201,9 +198,7 @@
               "projects/apps/fruit-store/src/favicon.ico",
               "projects/apps/fruit-store/src/assets"
             ],
-            "styles": [
-              "projects/apps/fruit-store/src/styles.scss"
-            ],
+            "styles": ["projects/apps/fruit-store/src/styles.scss"],
             "scripts": []
           }
         }

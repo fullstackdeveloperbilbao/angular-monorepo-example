@@ -18,7 +18,9 @@
     "importHelpers": true,
     "paths": {
       "@shared/product-card": ["projects/libs/shared/product-card/src/public-api.ts"],
-      "@fruit-store/layout": ["projects/libs/fruit-store/layout/src/public-api.ts"],
+      "@fruit-store/layout": [
+        "projects/libs/fruit-store/layout/src/public-api.ts"
+      ],
       "@bakery/shell": [
         "projects/libs/bakery/shell/src/public-api.ts"
       ],
